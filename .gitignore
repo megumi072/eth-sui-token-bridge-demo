@@ -1,0 +1,29 @@
+# OS / editor
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Secrets
+.env
+.env.*
+**/*private*.key
+**/*mnemonic*
+**/*secret*
+**/keystore/**
+**/*.pem
+
+# Foundry build artifacts
+eth_ibt/out/
+eth_ibt/cache/
+eth_ibt/broadcast/
+
+# Foundry deps 
+eth_ibt/lib/
+
+# Sui build artifacts / local state
+sui_ibt/build/
+sui_ibt/.sui/
+sui_ibt/.publish/*.toml
+
