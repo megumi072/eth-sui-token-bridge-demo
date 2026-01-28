@@ -1,83 +1,108 @@
-# ETH ↔ Sui Token Bridge Demo (IBT)
+# ETH ↔ Sui Token Bridge (IBT Demo)
 
-This repository contains a demo implementation of a token bridge between
-Ethereum and Sui using Solidity (Foundry) and Sui Move.
+This project is a local demo implementation of a bidirectional token bridge between Ethereum and Sui.
 
-The project shows how tokens can be locked/burned on one chain and minted
-on the other chain using events and a simple manual relayer flow.
+It allows:
 
----
+- Locking tokens on Sui and minting wrapped tokens on Ethereum  
+- Locking tokens on Ethereum and minting wrapped tokens on Sui  
 
-## Project structure
+The bridge is implemented using:
 
-eth_ibt/  
-- Solidity smart contracts  
-- IBT token (ERC20-like)  
-- BridgeEth contract (burn + mint with replay protection)
+- Ethereum smart contracts (Foundry)
+- Sui Move modules
+- A simple relayer-style API
+- A React UI for end-to-end interaction
 
-sui_ibt/  
-- Sui Move package  
-- Bridge shared object  
-- IBT coin implementation  
+## 📁 Project Structure
 
----
+bridge-project/
+│
+├── eth_ibt/ # Ethereum smart contracts (Foundry)
+├── sui_ibt/ # Sui Move package
+├── bridge-api/ # Express API acting as relayer
+├── bridge-ui/ # React UI
+└── README.md
 
-## Technologies
+## ⚙️ Prerequisites
 
-- Ethereum local chain (Anvil + Foundry)  
-- Solidity smart contracts  
-- Sui localnet + Move  
-- Manual relayer using transaction events and hashes  
+Make sure you have installed:
 
----
-
-## Bridge logic
-
-### ETH → Sui
-
-1. User holds IBT tokens on Ethereum  
-2. User approves BridgeEth contract  
-3. Tokens are burned on Ethereum  
-4. Bridge emits event containing Sui recipient  
-5. Relayer reads event and mints tokens on Sui  
+- Node.js (v18+ recommended)
+- Foundry (`forge`, `anvil`)
+- Sui CLI
 
 ---
 
-### Sui → ETH
+## 🚀 Running the Demo (Local)
 
-1. User locks/burns IBT tokens on Sui  
-2. Sui transaction digest is generated  
-3. Relayer computes:
+### 1️⃣ Start Ethereum local network
 
-   keccak256(Sui transaction digest)
-
-4. Relayer calls mintFromSui on Ethereum  
-5. BridgeEth mints IBT tokens on Ethereum  
-
-Replay protection is enforced by storing used digests.
-
----
-
-## How to run
-
-### Ethereum side
-
-cd eth_ibt
+```bash
 anvil
-forge build
-Deploy IBT and BridgeEth contracts and run transactions using cast.
-
-### Sui side
+2️⃣ Deploy Ethereum bridge contracts
+cd eth_ibt
+forge script script/DeployBridge.s.sol --broadcast --rpc-url http://localhost:8545
+3️⃣ Start Sui localnet (or use existing genesis)
+sui start
+In another terminal:
 
 cd sui_ibt
-sui client active-env
-sui client call ...
-Use Sui CLI to mint and lock tokens.
+sui client publish --gas-budget 200000000
+4️⃣ Start the API (relayer)
+cd bridge-api
+npm install
+node server.js
+API runs on:
 
+http://localhost:5050
+5️⃣ Start the UI
+cd bridge-ui
+npm install
+npm run dev
+UI runs on:
 
-## Notes
-This is an educational demo and does not include production security
-mechanisms such as light clients or cryptographic verification.
+http://localhost:5173
+🔁 Bridge Flow Overview
+▶️ Sui → Ethereum
+Mint IBT tokens on Sui
+
+Lock tokens in Sui Bridge object
+
+Sui emits LockEvent
+
+API takes Sui transaction digest
+
+Ethereum mints wrapped tokens
+
+▶️ Ethereum → Sui
+Lock tokens on Ethereum bridge contract
+
+Ethereum emits event
+
+API triggers mint on Sui using TreasuryCap
+
+User receives IBT tokens on Sui
+
+##🖥️ UI Demo
+The React UI allows:
+
+Minting tokens on Sui
+
+Locking tokens on Sui
+
+Minting on Ethereum using Sui digest
+
+(and vice-versa for ETH → Sui)
+
+All interactions are performed from the browser without manual CLI calls.
+
+##📌 Notes
+This is a local demo for educational purposes
+
+Uses manual relayer logic via API (not decentralized)
+
+Replay protection implemented using digests
 
 ## Author
 Madalina
