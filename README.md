@@ -16,13 +16,13 @@ The bridge is implemented using:
 
 ## 📁 Project Structure
 
-# bridge-project/
-# │
-# ├── eth_ibt/ 
-# ├── sui_ibt/ 
-# ├── bridge-api/ 
-# ├── bridge-ui/
-# └── README.md
+- bridge-project/
+- │
+- ├── eth_ibt/ 
+- ├── sui_ibt/ 
+- ├── bridge-api/ 
+- ├── bridge-ui/
+- └── README.md
 
 ## ⚙️ Prerequisites
 
