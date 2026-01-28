@@ -36,35 +36,36 @@ Make sure you have installed:
 
 ## 🚀 Running the Demo (Local)
 
-### 1️⃣ Start Ethereum local network
+### 1️ Start Ethereum local network
 
-```bash
+
 anvil
-2️⃣ Deploy Ethereum bridge contracts
+
+###2 Deploy Ethereum bridge contracts
 cd eth_ibt
 forge script script/DeployBridge.s.sol --broadcast --rpc-url http://localhost:8545
-3️⃣ Start Sui localnet (or use existing genesis)
+### 3️ Start Sui localnet (or use existing genesis)
 sui start
-In another terminal:
+####In another terminal:
 
 cd sui_ibt
 sui client publish --gas-budget 200000000
-4️⃣ Start the API (relayer)
+### 4️ Start the API (relayer)
 cd bridge-api
 npm install
 node server.js
 API runs on:
 
 http://localhost:5050
-5️⃣ Start the UI
+### 5️ Start the UI
 cd bridge-ui
 npm install
 npm run dev
 UI runs on:
 
 http://localhost:5173
-🔁 Bridge Flow Overview
-▶️ Sui → Ethereum
+##🔁 Bridge Flow Overview
+###▶️ Sui → Ethereum
 Mint IBT tokens on Sui
 
 Lock tokens in Sui Bridge object
@@ -75,7 +76,7 @@ API takes Sui transaction digest
 
 Ethereum mints wrapped tokens
 
-▶️ Ethereum → Sui
+###▶️ Ethereum → Sui
 Lock tokens on Ethereum bridge contract
 
 Ethereum emits event
