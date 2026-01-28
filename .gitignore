@@ -14,16 +14,30 @@
 **/keystore/**
 **/*.pem
 
+# Node / Vite
+**/node_modules/
+**/dist/
+**/.vite/
+**/.cache/
+**/coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
 # Foundry build artifacts
 eth_ibt/out/
 eth_ibt/cache/
 eth_ibt/broadcast/
 
-# Foundry deps 
+# Foundry deps
 eth_ibt/lib/
 
 # Sui build artifacts / local state
 sui_ibt/build/
 sui_ibt/.sui/
 sui_ibt/.publish/*.toml
+
+
 
