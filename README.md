@@ -85,7 +85,7 @@ API triggers mint on Sui using TreasuryCap
 
 User receives IBT tokens on Sui
 
-##🖥️ UI Demo
+## 🖥️ UI Demo
 The React UI allows:
 
 Minting tokens on Sui
