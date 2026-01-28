@@ -46,7 +46,7 @@ cd eth_ibt
 forge script script/DeployBridge.s.sol --broadcast --rpc-url http://localhost:8545
 ### 3️ Start Sui localnet (or use existing genesis)
 sui start
-####In another terminal:
+#### In another terminal:
 
 cd sui_ibt
 sui client publish --gas-budget 200000000
@@ -64,8 +64,8 @@ npm run dev
 UI runs on:
 
 http://localhost:5173
-##🔁 Bridge Flow Overview
-###▶️ Sui → Ethereum
+## 🔁 Bridge Flow Overview
+### ▶️ Sui → Ethereum
 Mint IBT tokens on Sui
 
 Lock tokens in Sui Bridge object
@@ -76,7 +76,7 @@ API takes Sui transaction digest
 
 Ethereum mints wrapped tokens
 
-###▶️ Ethereum → Sui
+### ▶️ Ethereum → Sui
 Lock tokens on Ethereum bridge contract
 
 Ethereum emits event
@@ -98,7 +98,7 @@ Minting on Ethereum using Sui digest
 
 All interactions are performed from the browser without manual CLI calls.
 
-##📌 Notes
+## 📌 Notes
 This is a local demo for educational purposes
 
 Uses manual relayer logic via API (not decentralized)
