@@ -11,4 +11,5 @@ edition = "2024"         # edition = "legacy" to use legacy (pre-2024) Move
 # https://docs.sui.io/guides/developer/sui-101/move-package-management
 
 [environments]
-localnet = "c62e6558"
+localnet = "83c9b2fc"
+
