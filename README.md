@@ -16,13 +16,13 @@ The bridge is implemented using:
 
 ## 📁 Project Structure
 
-bridge-project/
-│
-├── eth_ibt/ # Ethereum smart contracts (Foundry)
-├── sui_ibt/ # Sui Move package
-├── bridge-api/ # Express API acting as relayer
-├── bridge-ui/ # React UI
-└── README.md
+# bridge-project/
+# │
+# ├── eth_ibt/ 
+# ├── sui_ibt/ 
+# ├── bridge-api/ 
+# ├── bridge-ui/
+# └── README.md
 
 ## ⚙️ Prerequisites
 
@@ -41,7 +41,7 @@ Make sure you have installed:
 
 anvil
 
-###2 Deploy Ethereum bridge contracts
+### 2 Deploy Ethereum bridge contracts
 cd eth_ibt
 forge script script/DeployBridge.s.sol --broadcast --rpc-url http://localhost:8545
 ### 3️ Start Sui localnet (or use existing genesis)
